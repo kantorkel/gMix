@@ -1,11 +1,15 @@
 
-cd quelle aus /etc/apt/sources.list auskommentieren
+<!-- cd quelle aus /etc/apt/sources.list auskommentieren -->
 
+apt-get update
+apt-get upgrade
 
 apt-get install openssl libboost-graph-dev libxml-simple-perl libxerces-c-dev iperf zip unzip make autoconf g++ sudo
 
 
-### xerces installieren
+# xerces installieren
+sudo -s
+cd /root 
 
 wget https://github.com/srode/gMixTest/raw/master/modelnet/xerces-c-src2_1_0_modified.zip
 
@@ -16,7 +20,7 @@ export XERCESCROOT=/root/xerces-c-src2_1_0
 cd $XERCESCROOT/src/xercesc
 
 
-# kompilieren
+### kompilieren
 
 autoconf
 
@@ -30,19 +34,19 @@ cp -r $XERCESCROOT/src/xercesc /usr/include/xercesc2.1
 make
 
 
-# verschieben
+### verschieben
 
-cp $XERCESCROOT/lib/libxerces-c.so.21.0 /usr/lib/i386-linux-gnu/
+cp $XERCESCROOT/lib/libxerces-c.so.21.0 /usr/lib/x86_64-linux-gnu
 
-ln -s /usr/lib/i386-linux-gnu/libxerces-c.so.21.0 /usr/lib/i386-linux-gnu/libxerces2-c.so
-ln -s /usr/lib/i386-linux-gnu/libxerces-c.so.21.0 /usr/lib/i386-linux-gnu/libxerces-c.so.21
+ln -s /usr/lib/x86_64-linux-gnu/libxerces-c.so.21.0 /usr/lib/x86_64-linux-gnu/libxerces2-c.so
+ln -s /usr/lib/x86_64-linux-gnu/libxerces-c.so.21.0 /usr/lib/x86_64-linux-gnu/libxerces-c.so.21
 
-cd ~
+cd /root
 
 ### xerces installieren ende
 
 
-### modelnet installieren
+# modelnet installieren
 
 wget https://github.com/srode/gMixTest/raw/master/modelnet/modelnet-0.99_modified.zip
 
@@ -58,9 +62,7 @@ mkdir linux
 cd linux
 
 
-modelnet kompilieren
---------------------
-
+# modelnet kompilieren
 
 chmod +x ../configure
 
@@ -70,12 +72,12 @@ make
 
 make install
 
-cd ~
+cd /root
 
 ### modelnet installieren ende
 
 
-### libheap-perl 0.80 installieren
+# libheap-perl 0.80 installieren
 
 wget https://github.com/srode/gMixTest/raw/master/modelnet/Heap-0.80.tar.gz
 
@@ -94,7 +96,7 @@ cd ~
 ### libheap-perl 0.80 installieren ende
 
 
-### libgraph-perl 0.20105 installieren
+# libgraph-perl 0.20105 installieren
 
 wget https://github.com/srode/gMixTest/raw/master/modelnet/Graph-0.20105.tar.gz
 
@@ -116,7 +118,7 @@ cd ~
 
 
 
-### testbed installieren
+# testbed installieren
 
 mkdir /root/gmixTest
 
@@ -127,8 +129,7 @@ cd /root/gmixTest/framework
 unzip gMixFramework.zip
 
 
-cron Installieren
------------------
+### cron Installieren
 
 !!! falls der project root des gMix-Frameworks unter /root/gmixTest/framework liegt
 
@@ -144,4 +145,4 @@ in crontab /etc/crontab folgendes eintragen:
 
 
 
-Java installieren siehe extra Anleitung
+### Java installieren siehe extra Anleitung
